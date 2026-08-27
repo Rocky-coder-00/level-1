@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: #eeeaff;
+            font-family: Arial, sans-serif;
+        }
+
+        .login-box {
+            width: 580px;
+            min-height: 420px;
+            background: #101f55;
+            padding: 55px 70px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+        }
+
+        .signup {
+            position: absolute;
+            right: 25px;
+            top: 25px;
+            color: #aaa;
+            font-size: 12px;
+        }
+
+        h2 {
+            color: white;
+            font-size: 18px;
+            margin-bottom: 5px;
+        }
+
+        .subtitle {
+            color: #999;
+            font-size: 10px;
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            color: #999;
+            font-size: 10px;
+            margin-bottom: 6px;
+        }
+
+        input {
+            width: 100%;
+            height: 32px;
+            margin-bottom: 15px;
+            border: none;
+            outline: none;
+            padding: 5px 10px;
+            background: #1d2d60;
+            color: white;
+        }
+
+        button {
+            width: 100%;
+            height: 32px;
+            border: none;
+            margin-top: 5px;
+            color: white;
+            font-size: 10px;
+            font-weight: bold;
+            cursor: pointer;
+            background: linear-gradient(90deg, #4423d0, #8b2cf5);
+        }
+
+        button:hover {
+            opacity: 0.85;
+        }
+
+        .message {
+            text-align: center;
+            color: #777;
+            font-size: 9px;
+            margin-top: 10px;
+        }
+
+        .wave {
+            position: absolute;
+            bottom: -45px;
+            left: -5%;
+            width: 110%;
+            height: 90px;
+            background: #35227c;
+            border-radius: 50% 50% 0 0;
+            transform: rotate(-3deg);
+        }
+
+        .wave2 {
+            position: absolute;
+            bottom: -60px;
+            left: 30%;
+            width: 100%;
+            height: 90px;
+            background: #28206b;
+            border-radius: 50% 50% 0 0;
+            transform: rotate(5deg);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="login-box">
+
+        <div class="signup">Welcome →</div>
+
+        <h2>Here you can Login</h2>
+        <p class="subtitle">Enter your details :)</p>
+
+        <form onsubmit="checkAge(event)">
+
+            <label>Name</label>
+            <input
+                type="text"
+                id="name"
+                placeholder="Enter your name"
+                required
+            >
+
+            <label>Age</label>
+            <input
+                type="number"
+                id="age"
+                placeholder="Enter your age"
+                min="1"
+                max="120"
+                required
+            >
+
+            <label>Phone Number</label>
+            <input
+                type="tel"
+                id="phone"
+                placeholder="Enter your phone number"
+                pattern="[0-9]{10}"
+                maxlength="10"
+                required
+            >
+
+            <button type="submit">LOGIN</button>
+
+        </form>
+
+        <p class="message">Enter all details to continue</p>
+
+        <div class="wave"></div>
+        <div class="wave2"></div>
+
+    </div>
+
+    <script>
+        function checkAge(event) {
+            event.preventDefault();
+
+            const name = document.getElementById("name").value;
+            const age = Number(document.getElementById("age").value);
+
+            // Save the name for the second page
+            localStorage.setItem("username", name);
+
+            if (age >= 18) {
+                window.location.href = "adult.html";
+            } else {
+                window.location.href = "child.html";
+            }
+        }
+    </script>
+
+</body>
+</html>
